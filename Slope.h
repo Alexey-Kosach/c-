@@ -23,7 +23,7 @@ public:
     Piquet getStart() const;
     Piquet getEnd() const;
 
-    void setValue(double value);
+    void setValue(const double value);
     void setStart(const Piquet& start);
     void setEnd(const Piquet& end);
 
