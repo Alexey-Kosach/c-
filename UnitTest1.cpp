@@ -1,6 +1,7 @@
 #include "CppUnitTest.h"
 #include "../2. 2/Piquet.h"
 #include "../2. 2/Slope.h"
+#include <Windows.h>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace std;
@@ -10,6 +11,13 @@ namespace Tests
     TEST_CLASS(PiquetTests)
     {
     public:
+
+        TEST_METHOD_INITIALIZE(SetupRussian)
+        {
+            SetConsoleCP(1251);
+            SetConsoleOutputCP(1251);
+        }
+
         TEST_METHOD(Piquet_Create_Success)
         {
             Piquet p(12, 28.37, true);
@@ -21,14 +29,14 @@ namespace Tests
         TEST_METHOD(Piquet_ToString_Positive)
         {
             Piquet p(12, 28.37, true);
-            string expected = "œ  12+28.37";
+            string expected = "–ü–ö 12+28.37";
             Assert::AreEqual(expected, p.toString());
         }
 
         TEST_METHOD(Piquet_ToString_Negative)
         {
             Piquet p(-12, 28.37, true);
-            string expected = "œ  012+28.37";
+            string expected = "–ü–ö 012+28.37";
             Assert::AreEqual(expected, p.toString());
         }
 
@@ -67,8 +75,8 @@ namespace Tests
             string str = s.toString();
 
             Assert::IsTrue(str.find("25") != string::npos);
-            Assert::IsTrue(str.find("œ  10+0") != string::npos);
-            Assert::IsTrue(str.find("œ  20+0") != string::npos);
+            Assert::IsTrue(str.find("–ü–ö 10+0") != string::npos);
+            Assert::IsTrue(str.find("–ü–ö 20+0") != string::npos);
         }
 
         TEST_METHOD(Slope_ValidValue_ReturnsTrue)
