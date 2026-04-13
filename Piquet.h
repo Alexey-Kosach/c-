@@ -14,7 +14,7 @@ private:
     bool isStandard;
 
 public:
-    Piquet(int number = 0, double shift = 0.0, bool isStandard = true);
+    Piquet(const int number = 0, const double shift = 0.0, const bool isStandard = true);
     Piquet(const Piquet& other);
     ~Piquet() = default;
     Piquet(Piquet&& other) noexcept;
