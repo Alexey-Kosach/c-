@@ -10,6 +10,7 @@ int main()
     // Настройка консоли для правильного отображения русского языка
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
+    setlocale(LC_ALL, "Russian");
 
     cout << "=== Тестирование класса Пикет ===" << endl;
     Piquet p1(12, 28.37, true);
@@ -51,10 +52,14 @@ int main()
     cout << "s3 после перемещения из s1: " << s3 << endl;
     cout << "s1 после перемещения (сброшен): " << s1 << endl;
 
+    cout << "\n=== Ручной ввод уклона ===" << endl;
+    Slope s4;
+    s4.readFromStream(cin);
+    cout << "Введенный уклон: " << s4 << endl;
+
     cout << "\n=== Демонстрация полиморфизма ===" << endl;
-    Constraint* constraint = new Slope(15, Piquet(5, 0), Piquet(15, 0));
-    cout << "Через указатель на базовый класс: " << *constraint << endl;
-    delete constraint;
+    Slope s5(15, Piquet(5, 0), Piquet(15, 0));
+    cout << "Объект класса Slope: " << s5 << endl;
 
     cout << endl;
     system("pause");
