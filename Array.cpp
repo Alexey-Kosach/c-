@@ -5,13 +5,13 @@
 using namespace std;
 
 /**
- * @brief Конструктор по умолчанию - создаёт пустой массив
+ * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - СЃРѕР·РґР°С‘С‚ РїСѓСЃС‚РѕР№ РјР°СЃСЃРёРІ
  */
 vector::vector() : array(nullptr), size(0) {}
 
 /**
- * @brief Конструктор со списком инициализации
- * @param list список начальных значений
+ * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃРѕ СЃРїРёСЃРєРѕРј РёРЅРёС†РёР°Р»РёР·Р°С†РёРё
+ * @param list СЃРїРёСЃРѕРє РЅР°С‡Р°Р»СЊРЅС‹С… Р·РЅР°С‡РµРЅРёР№
  */
 vector::vector(const initializer_list<int> list) : size(list.size()) {
 	array = new int[size];
@@ -21,15 +21,15 @@ vector::vector(const initializer_list<int> list) : size(list.size()) {
 }
 
 /**
- * @brief Деструктор - освобождает память
+ * @brief Р”РµСЃС‚СЂСѓРєС‚РѕСЂ - РѕСЃРІРѕР±РѕР¶РґР°РµС‚ РїР°РјСЏС‚СЊ
  */
 vector::~vector() {
 	delete[] array;
 }
 
 /**
- * @brief Конструктор копирования
- * @param other массив для копирования
+ * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+ * @param other РјР°СЃСЃРёРІ РґР»СЏ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
  */
 vector::vector(const vector& other) : size(other.size) {
 	array = (size > 0) ? new int[size] : nullptr;
@@ -38,8 +38,8 @@ vector::vector(const vector& other) : size(other.size) {
 }
 
 /**
- * @brief Конструктор перемещения
- * @param other массив для перемещения
+ * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРµСЂРµРјРµС‰РµРЅРёСЏ
+ * @param other РјР°СЃСЃРёРІ РґР»СЏ РїРµСЂРµРјРµС‰РµРЅРёСЏ
  */
 vector::vector(vector&& other) : size(other.size), array(other.array) {
 	other.size = 0;
@@ -47,28 +47,28 @@ vector::vector(vector&& other) : size(other.size), array(other.array) {
 }
 
 /**
- * @brief Проверка на пустоту
- * @return true если элементов нет
+ * @brief РџСЂРѕРІРµСЂРєР° РЅР° РїСѓСЃС‚РѕС‚Сѓ
+ * @return true РµСЃР»Рё СЌР»РµРјРµРЅС‚РѕРІ РЅРµС‚
  */
 bool vector::isEmpty() const {
 	return size == 0;
 }
 
 /**
- * @brief Получение размера
- * @return количество элементов
+ * @brief РџРѕР»СѓС‡РµРЅРёРµ СЂР°Р·РјРµСЂР°
+ * @return РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ
  */
 size_t vector::getSize() const {
 	return size;
 }
 
 /**
- * @brief Преобразование в строку
- * @return строковое представление массива
+ * @brief РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РІ СЃС‚СЂРѕРєСѓ
+ * @return СЃС‚СЂРѕРєРѕРІРѕРµ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ РјР°СЃСЃРёРІР°
  */
 string vector::toString() const {
 	if (isEmpty())
-		return "Пусто";
+		return "РџСѓСЃС‚Рѕ";
 	stringstream ss;
 	for (size_t i = 0; i < size; ++i) {
 		ss << array[i];
@@ -79,9 +79,9 @@ string vector::toString() const {
 }
 
 /**
- * @brief Вставка элемента в заданную позицию
- * @param index место для вставки
- * @param element значение
+ * @brief Р’СЃС‚Р°РІРєР° СЌР»РµРјРµРЅС‚Р° РІ Р·Р°РґР°РЅРЅСѓСЋ РїРѕР·РёС†РёСЋ
+ * @param index РјРµСЃС‚Рѕ РґР»СЏ РІСЃС‚Р°РІРєРё
+ * @param element Р·РЅР°С‡РµРЅРёРµ
  */
 void vector::push(const size_t index, const int element) {
 	size_t insertIndex = (index > size) ? size : index;
@@ -97,8 +97,8 @@ void vector::push(const size_t index, const int element) {
 }
 
 /**
- * @brief Удаление элемента по индексу
- * @param index позиция удаляемого элемента
+ * @brief РЈРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РїРѕ РёРЅРґРµРєСЃСѓ
+ * @param index РїРѕР·РёС†РёСЏ СѓРґР°Р»СЏРµРјРѕРіРѕ СЌР»РµРјРµРЅС‚Р°
  */
 void vector::pop(const size_t index) {
 	if (index >= size)
@@ -115,9 +115,9 @@ void vector::pop(const size_t index) {
 }
 
 /**
- * @brief Замена элемента по индексу
- * @param index позиция элемента
- * @param element новое значение
+ * @brief Р—Р°РјРµРЅР° СЌР»РµРјРµРЅС‚Р° РїРѕ РёРЅРґРµРєСЃСѓ
+ * @param index РїРѕР·РёС†РёСЏ СЌР»РµРјРµРЅС‚Р°
+ * @param element РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ
  */
 void vector::replace(const size_t index, const int element) {
 	if (index < size)
@@ -125,35 +125,35 @@ void vector::replace(const size_t index, const int element) {
 }
 
 /**
- * @brief Доступ к элементу по индексу
- * @param index позиция элемента
- * @return ссылка на элемент
- * @throws out_of_range если индекс выходит за границы
+ * @brief Р”РѕСЃС‚СѓРї Рє СЌР»РµРјРµРЅС‚Сѓ РїРѕ РёРЅРґРµРєСЃСѓ
+ * @param index РїРѕР·РёС†РёСЏ СЌР»РµРјРµРЅС‚Р°
+ * @return СЃСЃС‹Р»РєР° РЅР° СЌР»РµРјРµРЅС‚
+ * @throws out_of_range РµСЃР»Рё РёРЅРґРµРєСЃ РІС‹С…РѕРґРёС‚ Р·Р° РіСЂР°РЅРёС†С‹
  */
 int& vector::operator[](const size_t index) {
 	if (index >= size) {
-		throw out_of_range("Нет такого элемента в массиве.");
+		throw out_of_range("РќРµС‚ С‚Р°РєРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РІ РјР°СЃСЃРёРІРµ.");
 	}
 	return array[index];
 }
 
 /**
- * @brief Доступ к элементу по индексу (только чтение)
- * @param index позиция элемента
- * @return константная ссылка на элемент
- * @throws out_of_range если индекс выходит за границы
+ * @brief Р”РѕСЃС‚СѓРї Рє СЌР»РµРјРµРЅС‚Сѓ РїРѕ РёРЅРґРµРєСЃСѓ (С‚РѕР»СЊРєРѕ С‡С‚РµРЅРёРµ)
+ * @param index РїРѕР·РёС†РёСЏ СЌР»РµРјРµРЅС‚Р°
+ * @return РєРѕРЅСЃС‚Р°РЅС‚РЅР°СЏ СЃСЃС‹Р»РєР° РЅР° СЌР»РµРјРµРЅС‚
+ * @throws out_of_range РµСЃР»Рё РёРЅРґРµРєСЃ РІС‹С…РѕРґРёС‚ Р·Р° РіСЂР°РЅРёС†С‹
  */
 const int& vector::operator[](const size_t index) const {
 	if (index >= size) {
-		throw out_of_range("Нет такого элемента в массиве.");
+		throw out_of_range("РќРµС‚ С‚Р°РєРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РІ РјР°СЃСЃРёРІРµ.");
 	}
 	return array[index];
 }
 
 /**
- * @brief Оператор присваивания копированием
- * @param other массив-источник
- * @return ссылка на текущий объект
+ * @brief РћРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ РєРѕРїРёСЂРѕРІР°РЅРёРµРј
+ * @param other РјР°СЃСЃРёРІ-РёСЃС‚РѕС‡РЅРёРє
+ * @return СЃСЃС‹Р»РєР° РЅР° С‚РµРєСѓС‰РёР№ РѕР±СЉРµРєС‚
  */
 vector& vector::operator=(const vector& other) {
 	if (this != &other) {
@@ -167,9 +167,9 @@ vector& vector::operator=(const vector& other) {
 }
 
 /**
- * @brief Оператор присваивания перемещением
- * @param other массив-источник
- * @return ссылка на текущий объект
+ * @brief РћРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ РїРµСЂРµРјРµС‰РµРЅРёРµРј
+ * @param other РјР°СЃСЃРёРІ-РёСЃС‚РѕС‡РЅРёРє
+ * @return СЃСЃС‹Р»РєР° РЅР° С‚РµРєСѓС‰РёР№ РѕР±СЉРµРєС‚
  */
 vector& vector::operator=(vector&& other) {
 	if (this != &other) {
@@ -184,9 +184,9 @@ vector& vector::operator=(vector&& other) {
 }
 
 /**
- * @brief Сравнение на равенство
- * @param other массив для сравнения
- * @return true если все элементы совпадают
+ * @brief РЎСЂР°РІРЅРµРЅРёРµ РЅР° СЂР°РІРµРЅСЃС‚РІРѕ
+ * @param other РјР°СЃСЃРёРІ РґР»СЏ СЃСЂР°РІРЅРµРЅРёСЏ
+ * @return true РµСЃР»Рё РІСЃРµ СЌР»РµРјРµРЅС‚С‹ СЃРѕРІРїР°РґР°СЋС‚
  */
 bool vector::operator==(const vector& other) const {
 	if (size != other.size)
@@ -198,19 +198,19 @@ bool vector::operator==(const vector& other) const {
 }
 
 /**
- * @brief Сравнение на неравенство
- * @param other массив для сравнения
- * @return true если массивы отличаются
+ * @brief РЎСЂР°РІРЅРµРЅРёРµ РЅР° РЅРµСЂР°РІРµРЅСЃС‚РІРѕ
+ * @param other РјР°СЃСЃРёРІ РґР»СЏ СЃСЂР°РІРЅРµРЅРёСЏ
+ * @return true РµСЃР»Рё РјР°СЃСЃРёРІС‹ РѕС‚Р»РёС‡Р°СЋС‚СЃСЏ
  */
 bool vector::operator!=(const vector& other) const {
 	return !(*this == other);
 }
 
 /**
- * @brief Вывод массива в поток
- * @param os поток вывода
- * @param vec выводимый массив
- * @return поток вывода
+ * @brief Р’С‹РІРѕРґ РјР°СЃСЃРёРІР° РІ РїРѕС‚РѕРє
+ * @param os РїРѕС‚РѕРє РІС‹РІРѕРґР°
+ * @param vec РІС‹РІРѕРґРёРјС‹Р№ РјР°СЃСЃРёРІ
+ * @return РїРѕС‚РѕРє РІС‹РІРѕРґР°
  */
 ostream& operator<<(ostream& os, const vector& vec) {
 	os << vec.toString();
@@ -218,10 +218,10 @@ ostream& operator<<(ostream& os, const vector& vec) {
 }
 
 /**
- * @brief Ввод значения из потока с добавлением в массив
- * @param is входной поток
- * @param vec массив для добавления
- * @return входной поток
+ * @brief Р’РІРѕРґ Р·РЅР°С‡РµРЅРёСЏ РёР· РїРѕС‚РѕРєР° СЃ РґРѕР±Р°РІР»РµРЅРёРµРј РІ РјР°СЃСЃРёРІ
+ * @param is РІС…РѕРґРЅРѕР№ РїРѕС‚РѕРє
+ * @param vec РјР°СЃСЃРёРІ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ
+ * @return РІС…РѕРґРЅРѕР№ РїРѕС‚РѕРє
  */
 istream& operator>>(istream& is, vector& vec) {
 	int val = 0;
