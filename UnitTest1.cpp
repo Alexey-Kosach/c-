@@ -22,7 +22,7 @@ namespace VectorTests
             vector v;
             Assert::AreEqual(static_cast<int>(v.getSize()), 0);
             Assert::IsTrue(v.isEmpty());
-            Assert::AreEqual(v.toString(), string("Пусто"));
+            Assert::AreEqual(v.toString(), string("РџСѓСЃС‚Рѕ"));
         }
 
         TEST_METHOD(InitializerListConstructor) {
@@ -98,7 +98,7 @@ namespace VectorTests
             vector v = { 1 };
             v.pop(0);
             Assert::IsTrue(v.isEmpty());
-            Assert::AreEqual(v.toString(), string("Пусто"));
+            Assert::AreEqual(v.toString(), string("РџСѓСЃС‚Рѕ"));
         }
 
         TEST_METHOD(ReplaceElement) {
